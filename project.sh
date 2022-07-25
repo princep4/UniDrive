@@ -15,6 +15,16 @@ ORANGE='\033[93m'
 declare -i wp_count=0
 
 echo "%%%%%%%%%%%%%%%%%% WELCOME #########################"
+
+echo -e " $ORANGE
+
+   __  __      _ ____       _          
+  / / / /___  (_) __ \_____(_)   _____ 
+ / / / / __ \/ / / / / ___/ / | / / _ \
+/ /_/ / / / / / /_/ / /  / /| |/ /  __/
+\____/_/ /_/_/_____/_/  /_/ |___/\___/ 
+                                       
+$COLOFF"
 # echo -e "$BLUE %%%%%% Enter the Name of the project or domain %%%%%%%%%%%%%% $COLOFF"
 # read -r domain
 # mkdir $domain
