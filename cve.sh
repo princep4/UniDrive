@@ -16,6 +16,7 @@ echo -e "$RED ########### Welcome to CVE checks   ############### $COLOFF"
 echo -e "$BLUE ########### 1. Wordpress CVEs check ############## $COLOFF"
 echo -e "$BLUE ########### 2. Others check ############## $COLOFF"
 read choice
+#echo "hello test"
 
 if [ $choice = "1" ]
 then
