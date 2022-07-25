@@ -194,19 +194,38 @@ then
         fi
         if cat curled_urls/$( echo "$url" | awk -F/ '{print $3}') | grep -E -o "\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,6}\b" ; then
             echo "Email Found:+ $( cat curled_urls/$( echo "$url" | awk -F/ '{print $3}') | grep -E -o "\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,6}\b" )"  >>  technologies/$( echo "$url" | awk -F/ '{print $3}')
-        fi    
+        fi  
+
+        if cat curled_urls/$( echo "$url" | awk -F/ '{print $3}') | grep -q -E -i "Symfony" ; then
+            echo "This Site is using Syfmony Profiler" >>  technologies/$( echo "$url" | awk -F/ '{print $3}')
+            curl -i -k --max-time 15 $url/_profiler/phpinfo > testing.txt
+            echo "$url"
+            if cat testing.txt | grep -q -E -i "php version"; then
+            echo "testing"
+                echo "It has some sensitive data visit: $url/_profiler/phpinfo" >>  technologies/$( echo "$url" | awk -F/ '{print $3}')
+            fi
+        fi
+
+        if cat curled_urls/$( echo "$url" | awk -F/ '{print $3}') | grep -q -E -i "xprober" ; then
+            echo "This Site is using xprober Services" >>  technologies/$( echo "$url" | awk -F/ '{print $3}')
+            curl -i -k --max-time 15 $url/xprober.php > testing.txt
+            if cat testing.txt | grep -q -E -i "<title>X Prober"; then
+                echo "It has some sensitive data visit: $url/xprober.php" >>  technologies/$( echo "$url" | awk -F/ '{print $3}')
+            fi
+        fi
+
     done < $Target
 elif [ $choice = "6" ]
 then
     echo -e "$RED %%%%%%%%%%%%%% STARTING AGRRESSIVE SCAN %%%%%%%%%%%%%%%%%% $COLOFF"
-    # mkdir aggressive
-    # echo -e "$BULE ######## Crawling all the given urls #########"
-    # echo -e "####### It may take time as per given urls ######"
-    # echo -e "###### Using Wapplyzer for technology scan ###### $COLOFF"
-    # mkdir aggressive/wappalyzer_results
-    # cat temp1.txt | while read f; do wappalyzer "${f}" > aggressive/wappalyzer_results/$( echo "$f" | awk -F/ '{print $3}') ; done;
-    # echo -e "$ORANGE ###### Crwalling all the urls within each urls using Wayback Machine ######$COLOFF"
-    # cat temp1.txt | waybackurls | grep "=" > waybackurls.txt
+    mkdir aggressive
+    echo -e "$BULE ######## Crawling all the given urls #########"
+    echo -e "####### It may take time as per given urls ######"
+    echo -e "###### Using Wapplyzer for technology scan ###### $COLOFF"
+    mkdir aggressive/wappalyzer_results
+    cat temp1.txt | while read f; do wappalyzer "${f}" > aggressive/wappalyzer_results/$( echo "$f" | awk -F/ '{print $3}') ; done;
+    echo -e "$ORANGE ###### Crwalling all the urls within each urls using Wayback Machine ######$COLOFF"
+    cat temp1.txt | waybackurls | grep "=" > waybackurls.txt
     
 
     # Do wapplyzer scan all the urls
