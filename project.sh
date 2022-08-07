@@ -56,6 +56,7 @@ $COLOFF"
 #NOW the choices are given
 
 echo -e "$BLUE %%%%%% Tests you can perform %%%%%%%%%%%%%% $COLOFF"
+echo -e "$BLUE %%%%%% c curl all the sites again $COLOFF"
 echo -e "$BLUE %%%%%% 1. Clickjacking $COLOFF"
 echo -e "$BLUE %%%%%% 2. Wp-check $COLOFF"
 echo -e "$BLUE %%%%%% 3. CVE check (Aggressive) $COLOFF"
@@ -63,7 +64,6 @@ echo -e "$BLUE %%%%%% 4. technology $COLOFF"
 echo -e "$BLUE %%%%%% 5. Sensitivie Information $COLOFF"
 echo -e "$BLUE %%%%%% 6. Aggressive Scan $COLOFF"
 echo -e "$BLUE %%%%%% 7. Web Traffic Analysis  $COLOFF"
-echo -e "$BLUE %%%%%% c curl all the sites again $COLOFF"
 
 
 
